@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Project my-third-project') {
       steps {
-        sh 'mkdir abcd'
+        sh 'rm -rf abcd; mkdir abcd || true'
         dir('ab' + 'cd') {
           sh 'pwd'
           echo pwd()
