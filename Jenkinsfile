@@ -1,3 +1,4 @@
+def scmVars = null
 pipeline {
   agent any
   stages {
@@ -10,7 +11,7 @@ pipeline {
     stage('Project my-second-project') {
       steps {
         script {
-          def scmVars = checkout([
+          scmVars = checkout([
             $class: 'GitSCM', 
             branches: [[name: '**/master']],
             userRemoteConfigs: [[url: 'https://github.com/UserNotExist12/my-second-project.git', credentialsId: 'baolin-github']],
