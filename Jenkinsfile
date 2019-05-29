@@ -6,7 +6,7 @@ pipeline {
         checkout([
           $class: 'GitSCM', 
           branches: [[name: '*/master']],
-          userRemoteConfigs: [[url: env.SANTABA_REPO, credentialsId: 'baolin-github']],
+          userRemoteConfigs: [[url: 'https://github.com/UserNotExist12/my-third-project.git', credentialsId: 'baolin-github']],
           extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'my-third-project']]
         ])
         sh 'export'
