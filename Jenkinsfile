@@ -9,12 +9,19 @@ pipeline {
     }
     stage('Project my-second-project') {
       steps {
-        checkout([
-          $class: 'GitSCM', 
-          branches: [[name: '**/master']],
-          userRemoteConfigs: [[url: 'https://github.com/UserNotExist12/my-second-project.git', credentialsId: 'baolin-github']],
-          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'my-second-project']]
-        ])
+        script {
+          def scmVars = checkout([
+            $class: 'GitSCM', 
+            branches: [[name: '**/master']],
+            userRemoteConfigs: [[url: 'https://github.com/UserNotExist12/my-second-project.git', credentialsId: 'baolin-github']],
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'my-second-project']]
+          ])
+          echo scmVars.GIT_BRANCH
+          echo scmVars.GIT_LOCAL_BRANCH
+          echo scmVars.GIT_URL
+          env.DYNAMIC = 'set dynamic var'
+          sh 'export DYNAMIC="set by export"'
+        }
         sh 'export'
         sh 'pwd'
       }
