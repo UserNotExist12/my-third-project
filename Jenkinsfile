@@ -6,6 +6,11 @@ pipeline {
   stages {
     stage('Project my-third-project') {
       steps {
+        script {
+          if (!(env.AAA || env.BBB)) {
+            error 'AAA and BBB should exist.'
+          }
+        }
         sh 'rm -rf abcd; mkdir abcd || true'
         dir('ab' + 'cd') {
           sh 'pwd'
