@@ -25,6 +25,7 @@ pipeline {
         }
         sh 'export'
         sh 'pwd'
+        echo scmVars.GIT_BRANCH
         script {
           echo scmVars.GIT_BRANCH
         }
