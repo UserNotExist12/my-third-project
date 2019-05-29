@@ -4,6 +4,11 @@ pipeline {
   stages {
     stage('Project my-third-project') {
       steps {
+        sh 'mkdir abcd'
+        dir('ab' + 'cd') {
+          sh 'pwd'
+          echo pwd()
+        }
         sh 'export'
         sh 'pwd'
       }
