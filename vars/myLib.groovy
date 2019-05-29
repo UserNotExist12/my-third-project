@@ -3,6 +3,6 @@ def call() {
     sh 'export'
     script {
        def aaa = 1
-       echo aaa
+       echo aaa.toString()
     }
 }
