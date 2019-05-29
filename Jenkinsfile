@@ -1,3 +1,5 @@
+@Library('my-lib') _
+
 def scmVars = null
 pipeline {
   agent any
@@ -11,6 +13,7 @@ pipeline {
         }
         sh 'export'
         sh 'pwd'
+        myLib()
       }
     }
     stage('Project my-second-project') {
