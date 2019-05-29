@@ -24,6 +24,9 @@ pipeline {
         }
         sh 'export'
         sh 'pwd'
+        script {
+          echo scmVars.GIT_BRANCH
+        }
       }
     }
     stage('Project chengdu_shangbao_test') {
@@ -36,6 +39,9 @@ pipeline {
         ])
         sh 'export'
         sh 'pwd'
+        script {
+          echo scmVars.GIT_BRANCH
+        }
       }
     }
   }
